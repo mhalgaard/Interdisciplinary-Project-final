@@ -1,0 +1,85 @@
+@using WebApplication1.Models.ViewModels;
+@model FrontpageViewModel
+
+<article id="board">
+    @foreach (var restaurant in Model.Restaurants)
+    {
+        <article id="restaurant-@restaurant.ID" class="visual">
+            <section id="slider" class="card">
+                @foreach (var image in restaurant.Images)
+                {
+                    <img src="@image.URL" alt="@restaurant.Name">
+                }
+                <section id="info-summary">
+                    <div>
+                        <p class="status">Åben nu</p>
+                        <a href="#info-@restaurant.ID" class="read-more">
+                            <h2 class="title">@restaurant.Name</h2>
+                            <i class="material-icons">info</i>
+                        </a>
+                        <ul class="info-list">
+                            <li class="distance">2 km</li>
+                            <li class="price">@restaurant.Priceclass</li>
+                            @foreach (var type in restaurant.RestaurantKitchenTypes.Select(x => x.KitchenType))
+                            {
+                                <li class="type">@type.Name<span>, </span></li>
+                            }
+                        </ul>
+                    </div>
+                </section>
+                <aside>
+                    <ul id="badges">
+                        @foreach (var badge in restaurant.RestaurantBadges.Select(x => x.Badge))
+                        {
+                            <li><img src="../img/@badge.ImageURL" alt="@badge.Name" /></li>
+                        }
+                    </ul>
+                </aside>
+            </section>
+            <section id="info-@restaurant.ID" class="info">
+                <section id="intro">
+                    <h2>@restaurant.Name</h2>
+                    <p class="description">@restaurant.Description</p>
+                </section>
+                <section id="menu-@restaurant.ID" class="menu">
+                    @foreach (var menu in restaurant.Menus)
+                    {
+                        @foreach (var category in menu.MenuItems.Select(x => x.Categories).Distinct())
+                        {
+                            <div class="accordion">
+                                <h3>@category</h3>
+                                <i class="material-icons">arrow_drop_down</i>
+                            </div>
+                            <table style="display:none;">
+                                @foreach (var menuitem in menu.MenuItems.Where(x => x.Categories == category))
+                                {
+                                    <tr>
+                                        <td>@menuitem.Title</td>
+                                        <td class="price">@menuitem.Price DKK</td>
+                                    </tr>
+                                }
+                            </table>
+                        }
+                    }
+                </section>
+                <section class="map">
+                    <iframe frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/directions?origin=@Model.UserCityName&destination=@restaurant.Address&mode=walking&key=AIzaSyDjUyLCqf0jobFWLha9AACFhpLTJC-vlCI" allowfullscreen></iframe>
+                </section>
+            </section>
+        </article>
+    }
+</article>
+
+<div id="utility">
+    <button id="nope" class="dislike">
+        <i class="material-icons">thumb_down</i>
+    </button>
+    <!-- Phone knap skal have tilføjet telefon link "<a href='tel:'></a>" for at prompte brugeren til at foretage et opkald til spisestedet -->
+    <button class="phone">
+        <i class="material-icons">phone_enabled</i>
+    </button>
+    <button id="love" class="like">
+        <i class="material-icons">thumb_up</i>
+    </button>
+</div>

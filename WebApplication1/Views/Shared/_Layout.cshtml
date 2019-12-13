@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/reset.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                @if (ViewBag.isHomepage != null)
+                {
+                    <li id="filter-btn">
+                        <a asp-controller="Filter" asp-action="Index">
+                            <i class="material-icons">filter_list</i>
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li id="filter-btn">
+                        <a asp-controller="Home" asp-action="Index">
+                            <i class="material-icons">arrow_back</i>
+                        </a>
+                    </li>
+                }
+                <li id="profile-btn">
+                    <a asp-controller="User" asp-action="Index">
+                        <i class="material-icons">account_circle</i>
+                    </a>
+                </li>
+                <li id="loc-btn">
+                    <a asp-controller="Location" asp-action="Index">
+                        <p class="loc-text">Aarhus C</p>
+                        <i class="material-icons">near_me</i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    @RenderBody()
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+
+</html>

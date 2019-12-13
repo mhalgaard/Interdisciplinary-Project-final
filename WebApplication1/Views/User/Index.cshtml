@@ -1,0 +1,28 @@
+﻿@using WebApplication1.Models.ViewModels;
+@model UserViewModel
+
+<main id="gemte-container">
+    <h1>Dine gemte steder</h1>
+    @foreach (var restaurant in Model.Restaurants.Where(x => x.ID < 5))
+    {
+        <article class="gemt-sted">
+            <section class="picture-sted">
+                @foreach (var images in restaurant.Images)
+                {
+                    <img src="@images.URL" alt="@restaurant.Name" />
+                }
+            </section>
+            <section class="info-sted">
+                <h2>@restaurant.Name</h2>
+                <p>@restaurant.Priceclass</p>
+                <ul>
+                    @foreach (var type in restaurant.RestaurantKitchenTypes.Select(x => x.KitchenType))
+                    {
+                        <li class="type">@type.Name<span>, </span></li>
+                    }
+                </ul>
+                <button>Bestil bord</button>
+            </section>
+        </article>
+    }
+</main>

@@ -1,0 +1,716 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, p, a, li {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.65;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+p {
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+HEADERNAV | HEADERNAV | HEADERNAV | HEADERNAV | HEADERNAV |
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: #38ada9;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 5px 1px rgba(0,0,0,.2)
+}
+
+    header nav, header ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        header nav li {
+            flex-basis: 33.33%;
+            padding: 0 5px;
+            display: inline-block;
+        }
+
+#profile-btn {
+    text-align: center;
+}
+
+#loc-btn {
+    text-align: right;
+}
+
+    #loc-btn > a {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #filter-btn i,
+    #profile-btn i,
+    #loc-btn i {
+        line-height: 50px;
+        display: inline;
+        color: #fff;
+        font-size: 35px;
+    }
+
+    #loc-btn i {
+        font-size: 24px;
+    }
+
+    #loc-btn p {
+        display: inline-block;
+        line-height: 50px;
+        font-size: 18px;
+        text-decoration: underline;
+        color: #fff;
+    }
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+INDEX | INDEX | INDEX |INDEX | INDEX | INDEX | INDEX
+INDEX | INDEX | INDEX |INDEX | INDEX | INDEX | INDEX
+INDEX | INDEX | INDEX |INDEX | INDEX | INDEX | INDEX
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+VISUAL | VISUAL | VISUAL | VISUAL | VISUAL | VISUAL | VISUAL
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+#board {
+    position: relative;
+}
+
+.visual {
+    margin-top: 50px;
+    position: absolute;
+    overflow: hidden;
+}
+
+#badges {
+    position: absolute;
+    right: 10px;
+    top: 25px;
+    width: 50px;
+    z-index: 2;
+}
+
+    #badges img {
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+        margin-bottom: 5px;
+    }
+
+#info-summary {
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    width: 100%;
+    padding: 15px 15px;
+    z-index: 2;
+    background: rgba(0,0,0,0.5);
+}
+
+#info-summary > div > p {
+    padding:0;
+    margin:0;
+    font-weight:bold;
+}
+
+#restaurant-5 .status, #restaurant-5 .info, #restaurant-5 .distance, #restaurant-5 .read-more i, #restaurant-5 .price:before {
+    display:none !important;
+}
+
+#restaurant-5 {
+    pointer-events:none;
+}
+
+.status {
+    color: rgb(18, 194, 18);
+    font-size: 25px;
+}
+
+.title {
+    font-size: 40px;
+    font-weight: bold;
+    padding: 5px 0;
+    color: #fff;
+    display: inline;
+}
+
+.distance-text {
+    display: inline;
+}
+
+.info-list {
+    width: 75%;
+}
+
+    .info-list li {
+        display: inline;
+        color: #fff;
+    }
+
+        .info-list li:nth-child(1n+2):before {
+            content: "•";
+            padding: 0 10px 0 5px;
+        }
+
+    .info-list .type:nth-child(n+4):before {
+        display: none;
+    }
+
+    .info-list .type {
+        display: inline;
+    }
+
+        .info-list .type:last-child > span {
+            display: none;
+        }
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+SLIDER | SLIDER | SLIDER | SLIDER | SLIDER | SLIDER | SLIDER
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* Primært slider indhold*/
+
+.loaded.visual {
+    opacity: 1;
+}
+
+.card {
+    width: 100%;
+    height: calc(100vh - 50px);
+    max-height:800px;
+    position: relative;
+    background: #FFFFFF;
+    overflow: hidden;
+    will-change: transform;
+    transition: all 0.3s ease-in-out;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab;
+}
+
+    .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.moving.card {
+    transition: none;
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
+}
+
+.card img {
+    max-width: 100%;
+    pointer-events: none;
+}
+
+.card h3 {
+    margin-top: 32px;
+    font-size: 32px;
+    padding: 0 16px;
+    pointer-events: none;
+}
+
+.card p {
+    margin-top: 24px;
+    font-size: 20px;
+    padding: 0 16px;
+    pointer-events: none;
+}
+
+.card section {
+    pointer-events: none;
+}
+
+.card section a {
+    pointer-events:initial;
+}
+
+.card aside ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hide {
+    display:none !important;
+}
+
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+UTILITY | UTILITY | UTILITY | UTILITY | UTILITY | UTILITY
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+#utility {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 99;
+}
+
+    #utility button {
+        border-radius: 500px;
+        height: 65px;
+        width: 65px;
+        border: 2px solid rgba(0, 0, 0, .07);
+        box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, .05);
+        background-color: #fff;
+    }
+
+        #utility button i {
+            font-size: 35px;
+        }
+
+.dislike {
+    color: rgb(201, 23, 23);
+}
+
+.phone {
+    color: rgb(53, 110, 233);
+}
+
+.like {
+    color: rgb(18, 194, 18);
+}
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+INFO | INFO | INFO | INFO | INFO | INFO | INFO | INFO | INFO
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+.read-more {
+    color: #fff;
+    display: block;
+}
+
+    .read-more i {
+        font-size: 25px;
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+        border-radius: 50%;
+        animation: pulse-black 2s infinite;
+        margin-left: 5px;
+    }
+
+@keyframes pulse-black {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 5px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+.info {
+    display: none;
+}
+
+#intro {
+    padding: 0 15px;
+}
+
+.info p, .info h2 {
+    color: #000;
+}
+
+.info h2 {
+    font-size: 28px;
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+.menu {
+    padding-top: 15px;
+    padding-bottom:30px;
+}
+
+.menu ul li {
+    color: #000;
+    padding: 5px 15px;
+}
+
+.menu tbody {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.accordion {
+    background-color: #38ada9;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    color: #fff;
+}
+
+    .accordion i {
+        transition: transform .1s linear;
+    }
+
+.active i {
+    transform:rotate(-90deg);
+}
+
+.menu h3 {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.menu tr {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px
+}
+
+.menu td:last-child {
+    font-style: italic;
+}
+
+.menu tr:nth-child(even) {
+    background-color: #C7EDE4;
+}
+
+.menu tr:nth-child(odd) {
+    background-color: #D5FFF3;
+}
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+MAP | MAP | MAP | MAP | MAP | MAP | MAP | MAP | MAP
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+.map {
+    width: 100%;
+    padding: 15px;
+    padding-bottom:55px;
+}
+
+    .map iframe {
+        width: 100%;
+        height: 250px;
+    }
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+FILTER | FILTER | FILTER |FILTER | FILTER | FILTER | FILTER
+FILTER | FILTER | FILTER |FILTER | FILTER | FILTER | FILTER
+FILTER | FILTER | FILTER |FILTER | FILTER | FILTER | FILTER
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+MAIN CONTENT
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+#filter-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+    #filter-container h1 {
+        flex-basis: 100%;
+        text-align: center;
+        margin-bottom: 0px;
+        padding-top: 50px;
+    }
+    #filter-container h1, #filter-container h2 {
+        font-weight: 700;
+    }
+
+.filter-sec {
+    border-bottom: 1px solid;
+    padding: 1em 2em 2em 2em;
+    flex-basis: 100%;
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+RANGE SLIDER DESIGN
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+.range {
+    padding-top: 0;
+}
+.range-container {
+    display: flex;
+    margin: auto;
+    text-align: center;
+}
+
+.slider {
+    width: 100%;
+    margin: auto;
+    padding-top: 10px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none !important;
+    width: 100%;
+    height: 8px;
+    background-color: #D5FFF3;
+    border: 1px solid #C7EDE4;
+    border-radius: 10px;
+    margin: auto;
+    transition: all 0.3s ease;
+}
+
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none !important;
+        width: 18px;
+        height: 18px;
+        background-color: #38ADA9;
+        border-radius: 30px;
+        box-shadow: 0px 0px 3px #3c3f3e;
+        transition: all 0.5s ease;
+    }
+
+        input[type="range"]::-webkit-slider-thumb:active {
+            box-shadow: 0px 0px 1px black;
+        }
+
+#rangevalue {
+    display: block;
+    margin: auto;
+    padding: 10px 0px;
+    width: 100%;
+}
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+CHECKBOXES | CHECKBOXES | CHECKBOXES |  CHECKBOXES |  CHECKBOXES |
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+.typer, .pris {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.check-container {
+    flex-basis: 33.33%;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    /* Skjul default checkbox */
+    .check-container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+/* custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #D5FFF3;
+    border: 1px solid #C7EDE4;
+}
+
+
+.check-container input:checked ~ .checkmark {
+    background-color: #38ADA9;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.check-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.check-container .checkmark:after {
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.alle, .pris h2, .typer p {
+    flex-basis: 100%;
+}
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+BUTTON | BUTTON | BUTTON |  BUTTON |  BUTTON |  BUTTON |
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+.save {
+    width: 100%;
+    text-align: center;
+    margin: 30px auto;
+}
+
+    .save button {
+        text-align: center;
+        width: 150px;
+        background-color: #38ada9;
+        border: 1px solid rgba(0,0,0,.05);
+        padding: 10px 15px;
+        color: #fff
+    }
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+GEMTE | GEMTE | GEMTE |GEMTE | GEMTE | GEMTE | GEMTE
+GEMTE | GEMTE | GEMTE |GEMTE | GEMTE | GEMTE | GEMTE
+GEMTE | GEMTE | GEMTE |GEMTE | GEMTE | GEMTE | GEMTE
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+MAIN
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+/*container med alle gemte steder*/
+#gemte-container {
+    margin-top: 50px;
+}
+
+    #gemte-container h1 {
+        text-align: center;
+        color: #000;
+        padding: 10px;
+        font-weight:700;
+    }
+/*Per gemt sted*/
+.gemt-sted {
+    display: flex;
+    align-items: center;
+    background-color: #C7EDE4;
+    margin-bottom: 20px;
+}
+
+.picture-sted img {
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    margin-right:15px;
+    float:left;
+}
+
+.info-sted {
+    display: flex;
+    flex-flow: column;
+    align-self: stretch;
+    justify-content: space-evenly;
+}
+
+    .info-sted p, .info-sted h2 {
+        margin: 0px;
+    }
+
+    .info-sted button {
+        text-align: center;
+        width: 150px;
+        background-color: #38ada9;
+        border: 1px solid rgba(0,0,0,.05);
+        padding: 10px 15px;
+        color: #fff;
+    }
+    .info-sted .type {
+        display:inline;
+    }
+
+    .info-sted .type:last-child span {
+        display:none;
+    }
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+LOKATION | LOKATION | LOKATION |LOKATION | LOKATION | LOKATION | LOKATION
+LOKATION | LOKATION | LOKATION |LOKATION | LOKATION | LOKATION | LOKATION
+LOKATION | LOKATION | LOKATION |LOKATION | LOKATION | LOKATION | LOKATION
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    #loc-container {
+        height: 100vh;
+        background-color: #D5FFF3;
+        display: flex;
+        flex-direction: column;
+    }
+
+.home-logo {
+    margin: auto;
+    width: 60%;
+    max-width: 400px;
+    margin: 150px auto 20px;
+}
+
+.home-logo img {
+    width: 100%;
+}
+
+.select-loc {
+    margin: 50px auto;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    align-content: center;
+}
+
+.button {
+    flex-basis: 80%;
+    width: 200px;
+    margin: auto;
+    margin-bottom: 40px;
+    background-color: #38ADA9;
+    color: #fff;
+    border: 1px solid rgba(0,0,0,.5);
+    padding: 10px 30px;
+    font-size: 16px;
+}

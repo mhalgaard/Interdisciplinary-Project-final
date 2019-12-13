@@ -1,0 +1,75 @@
+﻿<main id="filter-main">
+    <form id="filter-container">
+        <h1>Filtrering:</h1>
+        <section class="range filter-sec">
+            <h2>Afstand i km:</h2>
+            <!--https://codepen.io/thehonestape/pen/yjlGi *ved ikke om nogle af div kan skiftes ud-->
+            <div class="range-container">
+                <div class="slider">
+                    <input type="range" min="2" step="2" value="1" max="20" onchange="rangevalue.value=value" />
+                    <output id="rangevalue">2</output>
+                </div>
+            </div>
+        </section>
+        <section class="typer filter-sec">
+            <h2>Køkkentyper:</h2>
+            <label class="check-container alle">
+                <input type="checkbox" checked="checked">Alle
+                <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+                <input type="checkbox" checked="checked">Amerikansk
+                <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+                <input type="checkbox">Dansk
+                <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+                <input type="checkbox">Indisk
+                <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+                <input type="checkbox">Intaliansk
+                <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+                <input type="checkbox">Japansk
+                <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+                <input type="checkbox">Kinesisk
+                <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+                <input type="checkbox">Sushi
+                <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+                <input type="checkbox">Thailandsk
+                <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+                <input type="checkbox">Cafémad
+                <span class="checkmark"></span>
+            </label>
+            <p><u>Vis alle køkkentyper</u></p>
+        </section>
+        <section class="pris filter-sec">
+            <h2>Pris:</h2>
+            <label class="check-container">
+                <input type="checkbox">$
+                <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+                <input type="checkbox">$$
+                <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+                <input type="checkbox">$$$
+                <span class="checkmark"></span>
+            </label>
+        </section>
+        <section class="save"><button type="submit">Gem filter</button></section>
+    </form>
+</main>
